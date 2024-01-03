@@ -935,6 +935,7 @@ print("Tablas truncadas.")
 
 #merged_df.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 df_final.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='replace', index=False)
+print("COL LISTAS")
 df_deudores_1_COL_INDO.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 df_deudores_1_COL_UTC.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 df_deudores_1_COL_UTEG.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
