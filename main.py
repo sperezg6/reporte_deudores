@@ -1,6 +1,6 @@
 import psycopg2
 import pandas as pd
-import pymyssql
+import pymssql
 import sqlalchemy
 from sqlalchemy import text
 import time
@@ -24,15 +24,18 @@ nombres_colegio ={
         "Colegio Premio Nobel": "Premio Nobel",
 }
 #CONEXION A LA BASE DE DATOS MVP1
+#CONEXION A LA BASE DE DATOS MVP1
 servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
+
 
 # Establecer conexión
-connection_mvp1 = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1 = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos MVP1')
+
+
 
 query_mvp1_COL = """
 SELECT 
@@ -197,10 +200,10 @@ servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod-Indo'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
+
 
 # Establecer conexión
-connection_mvp1_INDO = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_INDO = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -290,10 +293,10 @@ servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod-UANE'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
+
 
 # Establecer conexión
-connection_mvp1_UANE = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UANE = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -381,10 +384,9 @@ servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod-ULA'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_ULA = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_ULA = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -472,10 +474,10 @@ servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod-UTC'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
+
 
 # Establecer conexión
-connection_mvp1_UTC = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UTC = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -566,10 +568,10 @@ servidor = 'mattilda-prod.database.windows.net'
 base_datos = 'Mattilda-Prod-UTEG'
 usuario = 'santiago.perez'
 contraseña = 'Ps&6986kprJ3%9FXm'
-driver = '{ODBC Driver 17 for SQL Server}'
+
 
 # Establecer conexión
-connection_mvp1_UTEG = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UTEG = pymssql.connect(server=servidor, user=usuario, password=contraseña, database=base_datos)
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -740,8 +742,6 @@ GROUP BY
 
 
 df_deudores_2_COL = pd.read_sql(query_mvp2_COL, conn_mvp2)
-
-
 
 
 conn_mvp2.close()
