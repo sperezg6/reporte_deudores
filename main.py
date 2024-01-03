@@ -1,6 +1,6 @@
 import psycopg2
 import pandas as pd
-import pyodbc
+import pymyssql
 import sqlalchemy
 from sqlalchemy import text
 import time
@@ -31,7 +31,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1 = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1 = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos MVP1')
 
 query_mvp1_COL = """
@@ -200,7 +200,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_INDO = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_INDO = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -293,7 +293,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_UANE = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UANE = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -384,7 +384,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_ULA = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_ULA = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -475,7 +475,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_UTC = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UTC = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos INDO')
 
 
@@ -569,7 +569,7 @@ contraseña = 'Ps&6986kprJ3%9FXm'
 driver = '{ODBC Driver 17 for SQL Server}'
 
 # Establecer conexión
-connection_mvp1_UTEG = pyodbc.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
+connection_mvp1_UTEG = pymyssql.connect(f'DRIVER={driver};SERVER={servidor};DATABASE={base_datos};UID={usuario};PWD={contraseña}')
 print('Conexión exitosa a la base de datos INDO')
 
 
