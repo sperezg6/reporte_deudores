@@ -934,14 +934,18 @@ print("Tablas truncadas.")
 
 
 #merged_df.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-df_final.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='replace', index=False)
-print("COL LISTAS")
-df_deudores_1_COL_INDO.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-df_deudores_1_COL_UTC.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-df_deudores_1_COL_UTEG.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-df_deudores_1_COL_ULA.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-df_deudores_1_COL_UANE.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
-print("COL LISTAS")
+# Concatenate all DataFrames into one
+df_combined = pd.concat([
+    df_final, 
+    df_deudores_1_COL_INDO, 
+    df_deudores_1_COL_UTC, 
+    df_deudores_1_COL_UTEG, 
+    df_deudores_1_COL_ULA, 
+    df_deudores_1_COL_UANE
+], ignore_index=True)
+
+# Insert the combined DataFrame into the database
+df_combined.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='replace', index=False)
 
 #df_deudores_1_REC.to_sql('Deudores_REC', engine, schema='mattildaprod', if_exists='replace', index=False)
 print("REC1 LISTAS")
