@@ -728,7 +728,8 @@ LEFT JOIN
     monthly_sums ON s.id = monthly_sums.student_id
 LEFT JOIN family_groups_users fgu on s.id = fgu.student_id
 LEFT JOIN users u on fgu.parent_id = u.id
-WHERE c.id not in ('3b3b63b8-2253-49d8-b3ea-20d88c2fa8bb','8600956f-2fb8-413d-b703-bd5b612abfca', 'b2eb68b0-79b5-4681-b20d-fa26bfdaa65b')
+WHERE c.id not in ('3b3b63b8-2253-49d8-b3ea-20d88c2fa8bb','8600956f-2fb8-413d-b703-bd5b612abfca', 'b2eb68b0-79b5-4681-b20d-fa26bfdaa65b',
+'44fe89d3-4da9-4e8e-9549-cf243d61c857','5fabb810-3872-463d-a1d2-9bfcba0ecf87','17b3a3c0-243c-4d6c-9108-351b529b2266','eef06116-2516-44e1-a339-0311bd3f79b8','eef06116-2516-44e1-a339-0311bd3f79b8')
 AND s.full_name not like '%Factura%'
 AND cs.status = 'active'
 AND u.referred_id is null
