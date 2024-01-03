@@ -45,14 +45,14 @@ SELECT
     IDAlumno,
     curp,
     nombre_completo,
-    sep_2022,oct_2022,nov_2022,dic_2022,ene_2023,feb_2023,mar_2023,abr_2023,may_2023,jun_2023,jul_2023,ago_2023, sept_2023,oct_2023, nov_2023,dic_2023,
-	sep_2022+oct_2022+nov_2022+dic_2022+ene_2023+feb_2023+mar_2023+abr_2023+may_2023+jun_2023+jul_2023+ago_2023+sept_2023+ oct_2023+ nov_2023 + dic_2023 as Total,
+    sep_2022,oct_2022,nov_2022,dic_2022,ene_2023,feb_2023,mar_2023,abr_2023,may_2023,jun_2023,jul_2023,ago_2023, sept_2023,oct_2023, nov_2023,dic_2023,ene_2024,
+	sep_2022+oct_2022+nov_2022+dic_2022+ene_2023+feb_2023+mar_2023+abr_2023+may_2023+jun_2023+jul_2023+ago_2023+sept_2023+ oct_2023+ nov_2023 + dic_2023 + ene_2024 as Total,
 	(case when sep_2022>0 then 1 else 0 end)+(case when oct_2022>0 then 1 else 0 end)+(case when nov_2022>0 then 1 else 0 end)+
 	(case when dic_2022>0 then 1 else 0 end)+(case when ene_2023>0 then 1 else 0 end)+(case when feb_2023>0 then 1 else 0 end)+
 	(case when mar_2023>0 then 1 else 0 end)+(case when abr_2023>0 then 1 else 0 end)+(case when may_2023>0 then 1 else 0 end)+
 	(case when jun_2023>0 then 1 else 0 end)+(case when jul_2023>0 then 1 else 0 end)+(case when ago_2023>0 then 1 else 0 end)+
 	(case when sept_2023>0 then 1 else 0 end)+ (case when oct_2023>0 then 1 else 0 end)+ (case when nov_2023 > 0 then 1 else 0 end)+
-     (case when dic_2023>0 then 1 else 0 end) N_Total
+     (case when dic_2023>0 then 1 else 0 end) + (case when ene_2024 >0 then 1 else 0 end) N_Total
 FROM (
     SELECT
         ta.IDColegio,
@@ -79,7 +79,8 @@ FROM (
 			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202309 then Saldo else 0  end)  sept_2023,
             sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202310 then Saldo else 0  end)  oct_2023,
             sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202311 then Saldo else 0  end)  nov_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202312 then Saldo else 0  end)  dic_2023
+            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202312 then Saldo else 0  end)  dic_2023,
+            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202401 then Saldo else 0  end)  ene_2024
             
     FROM t_alumno ta
     LEFT JOIN t_cargos tc ON ta.IDAlumno = tc.IDAlumno
@@ -114,14 +115,14 @@ SELECT
     IDAlumno,
     curp,
     nombre_completo,
-    sep_2022,oct_2022,nov_2022,dic_2022,ene_2023,feb_2023,mar_2023,abr_2023,may_2023,jun_2023,jul_2023,ago_2023, sept_2023,oct_2023, nov_2023,dic_2023,
-	sep_2022+oct_2022+nov_2022+dic_2022+ene_2023+feb_2023+mar_2023+abr_2023+may_2023+jun_2023+jul_2023+ago_2023+sept_2023+ oct_2023+ nov_2023 + dic_2023 as Total,
+    sep_2022,oct_2022,nov_2022,dic_2022,ene_2023,feb_2023,mar_2023,abr_2023,may_2023,jun_2023,jul_2023,ago_2023, sept_2023,oct_2023, nov_2023,dic_2023,ene_2024,
+	sep_2022+oct_2022+nov_2022+dic_2022+ene_2023+feb_2023+mar_2023+abr_2023+may_2023+jun_2023+jul_2023+ago_2023+sept_2023+ oct_2023+ nov_2023 + dic_2023 + ene_2024 as Total,
 	(case when sep_2022>0 then 1 else 0 end)+(case when oct_2022>0 then 1 else 0 end)+(case when nov_2022>0 then 1 else 0 end)+
 	(case when dic_2022>0 then 1 else 0 end)+(case when ene_2023>0 then 1 else 0 end)+(case when feb_2023>0 then 1 else 0 end)+
 	(case when mar_2023>0 then 1 else 0 end)+(case when abr_2023>0 then 1 else 0 end)+(case when may_2023>0 then 1 else 0 end)+
 	(case when jun_2023>0 then 1 else 0 end)+(case when jul_2023>0 then 1 else 0 end)+(case when ago_2023>0 then 1 else 0 end)+
 	(case when sept_2023>0 then 1 else 0 end)+ (case when oct_2023>0 then 1 else 0 end) + (case when nov_2023 > 0 then 1 else 0 end) 
-    +(case when dic_2023 > 0 then 1 else 0 end) N_Total
+    +(case when dic_2023 > 0 then 1 else 0 end)+ (case when ene_2024>0 then 1 else 0 end) N_Total
 FROM (
     SELECT
         ta.IDColegio,
@@ -148,7 +149,8 @@ FROM (
 			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202309 then Saldo else 0  end)  sept_2023,
             sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202310 then Saldo else 0  end)  oct_2023,
             sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202311 then Saldo else 0  end)  nov_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202312 then Saldo else 0  end)  dic_2023
+            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202312 then Saldo else 0  end)  dic_2023,
+            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202401 then Saldo else 0  end)  ene_2024
     FROM t_alumno ta
     LEFT JOIN t_cargos tc ON ta.IDAlumno = tc.IDAlumno
     JOIN cat_colegios cc ON ta.IDColegio = cc.IDColegio
@@ -664,69 +666,75 @@ print('Conexión exitosa a la base de datos MVP2')
 
 
 query_mvp2_COL= """
-WSELECT
-    IDColegio,
-    Nombre AS nombre_colegio,
-    IDConcepto,
-    nombre_pf,
-    email_pf,
-    telefono_pf,
-    IDAlumno,
-    curp,
-    nombre_completo,
-    sep_2022,oct_2022,nov_2022,dic_2022,ene_2023,feb_2023,mar_2023,abr_2023,may_2023,jun_2023,jul_2023,ago_2023, sept_2023,oct_2023,nov_2023,dic_2023, ene_2024,
-	sep_2022+oct_2022+nov_2022+dic_2022+ene_2023+feb_2023+mar_2023+abr_2023+may_2023+jun_2023+jul_2023+ago_2023+sept_2023+ oct_2023 + nov_2023 + dic_2023 + ene_2024 as Total,
-	(case when sep_2022>0 then 1 else 0 end)+(case when oct_2022>0 then 1 else 0 end)+(case when nov_2022>0 then 1 else 0 end)+
-	(case when dic_2022>0 then 1 else 0 end)+(case when ene_2023>0 then 1 else 0 end)+(case when feb_2023>0 then 1 else 0 end)+
-	(case when mar_2023>0 then 1 else 0 end)+(case when abr_2023>0 then 1 else 0 end)+(case when may_2023>0 then 1 else 0 end)+
-	(case when jun_2023>0 then 1 else 0 end)+(case when jul_2023>0 then 1 else 0 end)+(case when ago_2023>0 then 1 else 0 end)+
-	(case when sept_2023>0 then 1 else 0 end)+ (case when oct_2023>0 then 1 else 0 end)  +(case when nov_2023>0 then 1 else 0 end)
-	    + (case when dic_2023>0 then 1 else 0 end) + (case when ene_2024 > 0 then 1 else 0 end) Total
-FROM (
+WITH monthly_sums AS (
     SELECT
-        ta.IDColegio,
-        cc.Nombre,
-        IDConcepto,
-        MAX(CONCAT(tr.Nombre, ' ', tr.A_Paterno, ' ', tr.A_Materno)) AS nombre_pf,
-        MAX(tr.Email) AS email_pf,
-        MAX(tr.Telefono) AS telefono_pf,
-        tc.idalumno,
-        CONCAT(ta.Nombre, ' ', ta.A_Paterno, ' ', ta.A_Materno) AS Nombre_Completo,
-        ta.CURP AS curp,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) <= 202209 then Saldo else 0 end)  sep_2022,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202210 then Saldo else 0  end)  oct_2022,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202211 then Saldo else 0  end)  nov_2022,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202212 then Saldo else 0  end)  dic_2022,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202301 then Saldo else 0  end)  ene_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202302 then Saldo else 0  end)  feb_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202303 then Saldo else 0  end)  mar_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202304 then Saldo else 0  end)  abr_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202305 then Saldo else 0  end)  may_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202306 then Saldo else 0  end)  jun_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202307 then Saldo else 0  end)  jul_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202308 then Saldo else 0  end)  ago_2023,
-			sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202309 then Saldo else 0  end)  sept_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202310 then Saldo else 0  end)  oct_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202311 then Saldo else 0  end)  nov_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202312 then Saldo else 0  end)  dic_2023,
-            sum(case when YEAR(Fecha_Vencimiento)*100 + MONTH(Fecha_Vencimiento) = 202401 then Saldo else 0  end)  ene_2024
-
-    FROM t_alumno ta
-    LEFT JOIN t_cargos tc ON ta.IDAlumno = tc.IDAlumno
-    JOIN cat_colegios cc ON ta.IDColegio = cc.IDColegio
-    LEFT JOIN t_responsable tr ON tr.IDAlumno = ta.IDAlumno
-    WHERE ta.IDEstatus = 'A'
-	AND ta.Nombre not like '%Prueba%'
+        i.student_id,
+        EXTRACT(YEAR FROM i.due_date) AS year,
+        EXTRACT(MONTH FROM i.due_date) AS month,
+        SUM(i.pending_amount) AS monto
+    FROM
+        invoices i
+    WHERE
+        (i.due_date BETWEEN '2022-09-01' AND '2024-01-31')
+    AND i.status in( 'expired')
     GROUP BY
-        ta.IDColegio,
-        cc.Nombre,
-        IDConcepto,
-        tc.idalumno,
-        CONCAT(ta.Nombre, ' ', ta.A_Paterno, ' ', ta.A_Materno),
-        ta.CURP
-) AS subquery
-WHERE
-    IDConcepto = 'COL'
+        i.student_id,
+        EXTRACT(YEAR FROM i.due_date),
+        EXTRACT(MONTH FROM i.due_date)
+)
+
+SELECT
+    c.id AS IDColegio,
+    c.name AS nombre_Colegio,
+    'membership' AS IDConcepto,
+    min(u.full_name) as nombre_PF,
+    MIN(u.email) as email_PF,
+    MIN(u.phone) as telefono_PF,
+    s.matti_id AS IDAlumno,
+    s.curp as curp,
+    s.full_name AS Nombre_Completo,
+
+    -- Pivot the monthly sums
+    COALESCE(MAX(CASE WHEN year = 2022 AND month = 9 THEN monto END), 0) AS sept_2022,
+    COALESCE(MAX(CASE WHEN year = 2022 AND month = 10 THEN monto END), 0) AS oct_2022,
+    COALESCE(MAX(CASE WHEN year = 2022 AND month = 11 THEN monto END), 0) AS nov_2022,
+    COALESCE(MAX(CASE WHEN year = 2022 AND month = 12 THEN monto END), 0) AS dic_2022,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 1 THEN monto END), 0) AS ene_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 2 THEN monto END), 0) AS feb_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 3 THEN monto END), 0) AS mar_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 4 THEN monto END), 0) AS abr_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 5 THEN monto END), 0) AS may_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 6 THEN monto END), 0) AS jun_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 7 THEN monto END), 0) AS jul_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 8 THEN monto END), 0) AS ago_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 9 THEN monto END), 0) AS sept_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 10 THEN monto END), 0) AS oct_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 11 THEN monto END), 0) AS nov_2023,
+    COALESCE(MAX(CASE WHEN year = 2023 AND month = 12 THEN monto END), 0) AS dic_2023,
+    COALESCE(MAX(CASE WHEN year = 2024 AND month = 1 THEN monto END), 0) AS ene_2024,
+
+    CASE WHEN SUM(monto) is NULL  THEN 0
+        ELSE SUM(monto)
+        END AS total_monto,
+
+        SUM(CASE WHEN monto > 0 THEN 1 ELSE 0 END) AS N_Total
+FROM
+    students s
+JOIN
+    campus_students cs ON s.id = cs.student_id
+JOIN
+     campuses c on cs.campus_id = c.id
+LEFT JOIN
+    monthly_sums ON s.id = monthly_sums.student_id
+LEFT JOIN family_groups_users fgu on s.id = fgu.student_id
+LEFT JOIN users u on fgu.parent_id = u.id
+WHERE c.id not in ('3b3b63b8-2253-49d8-b3ea-20d88c2fa8bb','8600956f-2fb8-413d-b703-bd5b612abfca', 'b2eb68b0-79b5-4681-b20d-fa26bfdaa65b')
+AND s.full_name not like '%Factura%'
+AND cs.status = 'active'
+AND u.referred_id is null
+AND s.matti_id  not in ('301997236', '514656523')
+GROUP BY
+    c.id, c.name, s.matti_id, s.full_name, s.curp
 """
 
 
@@ -848,9 +856,7 @@ unificar_IDColegio = {
 def unificar_ids(row):
     return unificar_IDColegio.get(row['nombre_colegio'], row['IDColegio'])
 
-# Aplicamos la función usando el método 'apply' del DataFrame
-df_deudores_1_COL['IDColegio'] = df_deudores_1_COL.apply(unificar_ids, axis=1)
-df_deudores_1_REC['IDColegio'] = df_deudores_1_REC.apply(unificar_ids, axis=1)
+# Aplicamos la función usando el método 'apply' del DataFramdf_deudores_1_COL['IDColegio'] = df_deudores_1_COL.apply(unificar_ids, axis=1)
 
 print(df_deudores_1_COL.columns)
 
@@ -909,7 +915,7 @@ df_concatenated = pd.concat([df_deudores_2_COL, df_merge], ignore_index=True)
 
 # 3. Eliminar duplicados
 
-df_concatenated.to_csv('deudores_final1.csv', index=False)
+#df_concatenated.to_csv('deudores_final1.csv', index=False)
 df_final = df_concatenated.drop_duplicates(subset='IDAlumno', keep='first')
 df_final=df_concatenated.drop_duplicates(subset='curp', keep='first')
 
@@ -935,7 +941,7 @@ df_deudores_1_COL_ULA.to_sql('Deudores_COL', engine, schema='mattildaprod', if_e
 df_deudores_1_COL_UANE.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 print("COL LISTAS")
 
-df_deudores_1_REC.to_sql('Deudores_REC', engine, schema='mattildaprod', if_exists='replace', index=False)
+#df_deudores_1_REC.to_sql('Deudores_REC', engine, schema='mattildaprod', if_exists='replace', index=False)
 print("REC1 LISTAS")
 
 
@@ -972,14 +978,14 @@ SELECT
     col.oct_2023 + COALESCE(rec.oct_2023, 0) AS oct_2023,
     col.nov_2023 + COALESCE(rec.nov_2023, 0) AS nov_2023,
     col.dic_2023 + COALESCE(rec.dic_2023, 0) AS dic_2023,
-    col.ene_2024 + COALESCE(rec.ene_2024, 0) AS ene_2024
+    col.ene_2024  AS ene_2024,
 
 
     -- Columna "Total" como suma de todos los meses
     (col.sep_2022 + col.oct_2022 + col.nov_2022 + col.dic_2022 + col.ene_2023 + col.feb_2023 + col.mar_2023 + col.abr_2023 + col.may_2023 + col.jun_2023 + col.jul_2023 + col.ago_2023+ col.sept_2023+ col.oct_2023+col.nov_2023+col.dic_2023+col.ene_2024)
     + COALESCE(rec.sep_2022, 0) + COALESCE(rec.oct_2022, 0) + COALESCE(rec.nov_2022, 0) + COALESCE(rec.dic_2022, 0) + COALESCE(rec.ene_2023, 0) + COALESCE(rec.feb_2023, 0)
     + COALESCE(rec.mar_2023, 0) + COALESCE(rec.abr_2023, 0) + COALESCE(rec.may_2023, 0) + COALESCE(rec.jun_2023, 0) + COALESCE(rec.jul_2023, 0) + COALESCE(rec.ago_2023, 0)
-    + COALESCE(rec.sept_2023, 0)+ COALESCE(rec.oct_2023, 0)+ COALESCE(rec.nov_2023, 0)+ COALESCE(rec.dic_2023, 0) + COALESCE(rec.ene_2024, 0)
+    + COALESCE(rec.sept_2023, 0)+ COALESCE(rec.oct_2023, 0)+ COALESCE(rec.nov_2023, 0)+ COALESCE(rec.dic_2023, 0) 
     AS "Total",
 
     -- Columna "N_Total" como cuenta de meses con monto > 0
@@ -1000,7 +1006,7 @@ SELECT
     (CASE WHEN col.oct_2023 + COALESCE(rec.oct_2023, 0) > 0 THEN 1 ELSE 0 END)+
     (CASE WHEN col.nov_2023 + COALESCE(rec.nov_2023, 0) > 0 THEN 1 ELSE 0 END)+
     (CASE WHEN col.dic_2023 + COALESCE(rec.dic_2023, 0) > 0 THEN 1 ELSE 0 END)
-    + (CASE WHEN col.ene_2024 + COALESCE(rec.ene_2024, 0) > 0 THEN 1 ELSE 0 END)
+    + (CASE WHEN col.ene_2024  > 0 THEN 1 ELSE 0 END)
     AS "N_Total"
 
 FROM
