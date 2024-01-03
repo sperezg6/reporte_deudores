@@ -807,7 +807,6 @@ with engine.begin() as connection:
         );
     """))
     table_exists = result.scalar()
-
 if table_exists:
     print("La tabla Deudores_COL existe.")
 else:
@@ -935,18 +934,19 @@ print("Tablas truncadas.")
 
 #merged_df.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 # Concatenate all DataFrames into one
-df_combined = pd.concat([
-    df_final, 
-    df_deudores_1_COL_INDO, 
-    df_deudores_1_COL_UTC, 
-    df_deudores_1_COL_UTEG, 
-    df_deudores_1_COL_ULA, 
-    df_deudores_1_COL_UANE
-], ignore_index=True)
+# List of your DataFrames
+dataframes = [df_final, df_deudores_1_COL_INDO, df_deudores_1_COL_UTC, df_deudores_1_COL_UTEG, df_deudores_1_COL_ULA, df_deudores_1_COL_UANE]
 
-# Insert the combined DataFrame into the database
-df_combined.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='replace', index=False)
+# Iterate and append each DataFrame to the database
+for i, df in enumerate(dataframes):
+    if i == 0:
+        # For the first DataFrame, replace the existing table (if any)
+        df.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='replace', index=False)
+    else:
+        # For subsequent DataFrames, append to the table
+        df.to_sql('Deudores_COL', engine, schema='mattildaprod', if_exists='append', index=False)
 
+print("All DataFrames inserted into the database.")
 #df_deudores_1_REC.to_sql('Deudores_REC', engine, schema='mattildaprod', if_exists='replace', index=False)
 print("REC1 LISTAS")
 
